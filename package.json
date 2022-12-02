@@ -1,0 +1,29 @@
+{
+  "name": "parcial-final",
+  "version": "1.0.0",
+  "description": "Proyecto - parcial final de programación avanzada",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "a"
+  },
+  "keywords": [
+    "udistrital",
+    "e-commerce",
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "Santiago Baron Zuleta",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.6",
+    "nodemon": "^2.0.20"
+  }
+}

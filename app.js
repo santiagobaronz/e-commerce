@@ -25,7 +25,7 @@ const connection = mysql.createConnection({
 
 connection.connect(error => {
     if(error) throw error;
-    console.log('Database server running!')
+    console.log('Base de datos conectada')
 })
 
 /***************************************************************
@@ -42,5 +42,5 @@ app.get('/', (req, res) => {
  *                          Port 
 ***************************************************************/
 
-const port = process.env.port || 3050;
+const port = process.env.port || 8080;
 app.listen(port, () => console.log(`Escuchando en el puerto ${port}...`));

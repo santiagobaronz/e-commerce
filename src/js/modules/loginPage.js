@@ -35,8 +35,17 @@ export const loginPage = () => {
             errorMessage.style.display = "block";
         }else{
             fetch(`./admins/${adminMail}/${adminPassword}`)
-            .then(answer => answer.json())
-            .then(answer => console.log(answer))
+            .then(status => status.json())
+            .then(status => {
+
+                if(status){
+                    
+                }else{
+                    errorMessage.style.display = "block";
+                    errorMessage.innerHTML = "El correo o contraseña no coinciden"
+                }
+
+            });
         }
 
     })

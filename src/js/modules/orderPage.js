@@ -34,6 +34,15 @@ export const orderPage = async (orderToFind = "") => {
     <h1>Estadísticas de la tienda</h1>
 
     <div class='orderMetrics'>
+        <div class='metric_card metric_message'>
+            <h2>Hola Santiago Baron</h2>
+            <p>Bienvenido al sistema de pedidos de UD Identity. 
+            Desde aquí podrás gestionar las compras y envíos solicitados. 
+            También podrás acceder a las estadísticas de la tienda y mucho más.
+            </p>
+            <p>¡La tienda ha sido visitada 400 veces!</p>
+        </div>
+
         <div class='metric2_card'>
             <div class='metric_product'>
                 <img src='./src/assets/orden.png' class='metric2_imgs'>
@@ -43,8 +52,8 @@ export const orderPage = async (orderToFind = "") => {
                 <img src='./src/assets/producto.png' class='metric2_imgs'>
                 <p>13 productos vendidos</p>
             </div>
-            
         </div>
+
         <div class='metric_card'>
             <img src='./src/assets/ingresos.png' class='metric_imgs'>
             <div class='metricText'>
@@ -52,9 +61,7 @@ export const orderPage = async (orderToFind = "") => {
                 <p>$400.000</p>
             </div>
         </div>
-        <div class='metric_card'>
-            
-        </div>
+        
     </div>
 
     <div class='findInput'>

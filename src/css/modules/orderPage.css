@@ -11,7 +11,7 @@
 
 .orderMetrics{
     display: grid;
-    grid-template-columns: 1fr 1fr 3fr;
+    grid-template-columns: 3fr 1fr 1fr;
     column-gap: 30px;
     margin-bottom: 70px;
 }
@@ -73,6 +73,26 @@
     margin-top: 15px;
     font-size: 25px;
     font-weight: 500;
+}
+
+.metric_message{
+    padding: 40px;
+}
+
+.metric_message > h2{
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-left: 4px solid #245055;
+    padding-left: 20px;
+}
+
+.metric_message > p {
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.metric_message > p:nth-child(3){
+    font-size: 15px;
 }
 
 .findInput{

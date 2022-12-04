@@ -37,6 +37,23 @@ app.get('/', (req, res) => {
     res.sendFile('./index.html')
 })
 
+/***************************************************************
+ *                          Login 
+***************************************************************/
+
+app.get('/admins/:email/:password', (req, res) => {
+    const {email, password} = req.params;
+    const sql = `SELECT * FROM admin WHERE correo = '${email}' AND clave_seguridad = '${password}'`;
+    connection.query(sql, (error, results) => {
+        if(error) throw error;
+        if(results.length > 0){
+            res.send(true);
+        }else{
+            res.send(false);
+        }
+    });
+})
+
 
 /***************************************************************
  *                          Port 

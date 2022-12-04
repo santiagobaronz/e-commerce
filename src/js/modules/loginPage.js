@@ -1,0 +1,44 @@
+import { cleanContainer, mainContent } from "../main.js";
+import { popUpAlert } from "./popAlert.js";
+
+export const loginPage = () => {
+
+    cleanContainer()
+    mainContent.innerHTML = `
+    
+    <div class='login-section'>
+        <div class='login-box'>
+            <img src='./src/assets/logo-horizontal.png' class='login-img'>
+            <div class='form-login'>
+                <h2>Iniciar sesión como administrador</h2>
+                <form>
+                    <label>Correo electrónico</label>
+                    <input id='adminEmail' type='text' placeholder='admin@udistrital.edu.co' class='input-form'>
+                    <label>Contraseña</label>
+                    <input id='adminPassword' type='password' placeholder='*************' autocomplete class='input-form'>
+                    <p id='error-form'>Completa todos los campos!</p>
+                    <input type='submit' class='loginButton' value='Iniciar sesión'>
+                </form>
+            </div>
+        </div>
+    </div>`;
+
+    const loginButton = document.querySelector(".loginButton");
+    loginButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        
+        let adminMail = document.querySelector("#adminEmail").value;
+        let adminPassword = document.querySelector("#adminPassword").value;
+        let errorMessage = document.querySelector("#error-form")
+
+        if(adminMail == "" || adminPassword == ""){
+            errorMessage.style.display = "block";
+        }else{
+            fetch(`./admins/${adminMail}/${adminPassword}`)
+            .then(answer => answer.json())
+            .then(answer => console.log(answer))
+        }
+
+    })
+
+}

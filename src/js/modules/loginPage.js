@@ -1,4 +1,5 @@
 import { cleanContainer, mainContent } from "../main.js";
+import { orderPage } from "./orderPage.js";
 import { popUpAlert } from "./popAlert.js";
 
 export const loginPage = () => {
@@ -39,7 +40,7 @@ export const loginPage = () => {
             .then(status => {
 
                 if(status){
-                    
+                    orderPage();
                 }else{
                     errorMessage.style.display = "block";
                     errorMessage.innerHTML = "El correo o contraseña no coinciden"

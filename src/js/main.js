@@ -17,12 +17,17 @@ export const cleanContainer = () => {
 
 window.addEventListener("load", () => {
     homePage();
+    fetch("/visits/update");
 })
 
 /* Menu links listeners */
 
 const loginButton = document.querySelector("#login-button");
+const footerLogin = document.querySelector("#footer-login")
 loginButton.addEventListener("click", () => {
+    loginPage();
+})
+footerLogin.addEventListener("click", () => {
     loginPage();
 })
 

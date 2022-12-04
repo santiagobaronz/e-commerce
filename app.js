@@ -38,6 +38,52 @@ app.get('/', (req, res) => {
 })
 
 /***************************************************************
+ *                          Visits 
+***************************************************************/
+
+app.get('/visits/:query', (req, res) => {
+
+    const {query} = req.params;
+
+    if(query == "get"){
+        const sql = `SELECT visitas FROM metrics WHERE id = '1' `;
+        connection.query(sql, (error, results) => {
+            if (error)
+                throw error;
+            if (results.length > 0) {
+                let string = JSON.stringify(results);
+                let json = JSON.parse(string);
+                let visits = json[0].visitas;
+                res.json(visits);
+            } else {
+                res.send(false);
+            }
+        })
+    }
+
+    if(query == "update"){
+        const sql = `SELECT visitas FROM metrics WHERE id = '1' `;
+        connection.query(sql, (error, results) => {
+            if (error)
+                throw error;
+            if (results.length > 0) {
+                let string = JSON.stringify(results);
+                let json = JSON.parse(string);
+                let visits = json[0].visitas + 1;
+
+                const sql2 = `UPDATE metrics SET visitas = ${visits} WHERE id = 1`;
+                connection.query(sql2, (error, results) => {
+                    if (error)
+                        throw error;
+                })
+            } else {
+                res.send(false);
+            }
+        })
+    }
+})
+
+/***************************************************************
  *                          Login 
 ***************************************************************/
 

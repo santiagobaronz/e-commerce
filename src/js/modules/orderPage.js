@@ -8,7 +8,11 @@ export const orderPage = async (orderToFind = "") => {
     const main = document.querySelector("main")
     main.style.backgroundColor = "#080c17"
 
-    let orderArray = [], fetchURL, countOrders;
+    let orderArray = [], fetchURL, countOrders, countVisits;
+
+    await fetch("/visits/get")
+    .then(data => data.json())
+    .then(data => countVisits = data);
 
     (orderToFind != "") ? fetchURL = `/orders/${orderToFind}` : fetchURL = "/orders";
 
@@ -40,7 +44,7 @@ export const orderPage = async (orderToFind = "") => {
             Desde aquí podrás gestionar las compras y envíos solicitados. 
             También podrás acceder a las estadísticas de la tienda y mucho más.
             </p>
-            <p>¡La tienda ha sido visitada 400 veces!</p>
+            <p>¡La tienda ha sido visitada ${countVisits} veces!</p>
         </div>
 
         <div class='metric2_card'>

@@ -70,6 +70,20 @@ app.get('/orders', (req, res) => {
     });
 });
 
+app.get('/orders/:order', (req, res) => {
+    const {order} = req.params;
+    console.log(order);
+    const sql = `SELECT * FROM orders WHERE codigo_orden = '${order}'`;
+    connection.query(sql, (error, results) => {
+        if(error) throw error;
+        if(results.length > 0){
+            res.json(results);
+        }else{
+            res.json('no_results')
+        }
+    });
+});
+
 /***************************************************************
  *                          Port 
 ***************************************************************/

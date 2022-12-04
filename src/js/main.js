@@ -9,6 +9,8 @@ import { loginPage } from "./modules/loginPage.js";
 export const mainContent = document.querySelector(".main-content");
 export const cleanContainer = () => {
     mainContent.innerHTML = "";
+    const main = document.querySelector("main")
+    main.style.backgroundColor = "var(--white)"
 }
 
 /* Main content is charged when the window is loaded */

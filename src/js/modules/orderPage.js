@@ -5,6 +5,9 @@ export const orderPage = async (orderToFind = "") => {
 
     cleanContainer();
 
+    const main = document.querySelector("main")
+    main.style.backgroundColor = "#080c17"
+
     let orderArray = [], fetchURL, countOrders;
 
     (orderToFind != "") ? fetchURL = `/orders/${orderToFind}` : fetchURL = "/orders";
@@ -28,21 +31,39 @@ export const orderPage = async (orderToFind = "") => {
     findOrderSection.className = "findOrderSection";
     findOrderSection.innerHTML = `
 
-    <h1>Estadisticas de la tienda</h1>
+    <h1>Estadísticas de la tienda</h1>
 
     <div class='orderMetrics'>
-        <div class='metric_card mc-1'></div>
-        <div class='metric_card mc-2'></div>
-        <div class='metric_card mc-3'></div>
+        <div class='metric2_card'>
+            <div class='metric_product'>
+                <img src='./src/assets/orden.png' class='metric2_imgs'>
+                <p>${countOrders} pedidos realizados</p>
+            </div>
+            <div class='metric_product'>
+                <img src='./src/assets/producto.png' class='metric2_imgs'>
+                <p>13 productos vendidos</p>
+            </div>
+            
+        </div>
+        <div class='metric_card'>
+            <img src='./src/assets/ingresos.png' class='metric_imgs'>
+            <div class='metricText'>
+                <p>Ingresos recibidos</p>
+                <p>$400.000</p>
+            </div>
+        </div>
+        <div class='metric_card'>
+            
+        </div>
     </div>
 
     <div class='findInput'>
         <div>
             <h2>Ordenes</h2>
-            <p class='totalOrders'>Se encontraron ${countOrders} ordenes</p>
+            <p class='totalOrders'>Se encontraron ${countOrders} órdenes</p>
         </div>
         <div>
-            <input type='text' id='filterInput' placeholder='Filtrar por código de producto'>
+            <input type='text' id='filterInput' placeholder='Filtrar por código de producto (Ej: AT9081)'>
             <button id='filterButton'><img src='./src/assets/lupa.png'></button>
         </div>
     </div>

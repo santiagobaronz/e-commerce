@@ -1,25 +1,78 @@
-.orderMetrics{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 30px;
-    margin-bottom: 50px;
-}
-
-.metric_card{
-    width: 100%;
-    height: 150px;
-    border-radius: 20px;
-    transition: 0.2s all;
-    background-color: #46495e;
-}
-
 .findOrderSection{
     width: 85%;
     margin: auto;
+    padding: 50px 0;
+    color: var(--white);
 }
 
 .findOrderSection > h1{
     margin-bottom: 30px;
+}
+
+.orderMetrics{
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+    column-gap: 30px;
+    margin-bottom: 70px;
+}
+
+.metric_card{
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    transition: 0.2s all;
+    background-color: #1f213a;
+}
+
+.metric2_card{
+    width: 100%;
+    height: 250px;
+    transition: 0.2s all;
+}
+
+.metric_product{
+    width: 100%;
+    height: 110px;
+    background-color:#1f213a;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+}
+
+.metric2_imgs{
+    width: 60px;
+    height: 60px;
+    background-color: rgba(128, 128, 128, 0.237);
+    border-radius: 15px;
+    padding: 8px;
+    margin: auto;
+}
+
+.metric_product > p{
+    margin: auto;
+}
+
+.metric_imgs{
+    width: 90px;
+    height: 90px;
+    background-color: rgba(128, 128, 128, 0.237);
+    border-radius: 15px;
+    padding: 15px;
+    display: block;
+    margin: 30px auto 0 auto;
+}
+
+.metricText{
+    color: var(--white);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.metricText p:nth-child(2){
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .findInput{
@@ -36,9 +89,9 @@
     height: 50px;
     border-radius: 15px;
     padding-left: 20px;
-    color: var(--black);
-    border: 1px solid #ccc;
-    font-size: 16px;
+    color: var(--white);
+    background-color: #171b31;
+    font-size: 15px;
 }
 
 .findOrderSection > h2{
@@ -47,7 +100,6 @@
 
 .totalOrders{
     text-align: left;
-    color: var(--black);
     margin-bottom: 30px;
 }
 
@@ -79,10 +131,10 @@
     cursor: pointer;
     margin-bottom: 20px;
     transition: 0.2s all;
-    box-shadow: 1px 1px 25px rgb(219 219 219 / 80%);
 }
 
-.orderBox:hover, .metric_card:hover{
+.orderBox:hover, .metric_card:hover,
+.metric_product:hover{
     transform: translate(2px,-2px);
     transition: 0.2s all;
 }
@@ -183,7 +235,7 @@
     display: block;
     height: 60px;
     border-radius: 15px;
-    background-color: var(--indigo);
+    background-color:  #3a3b64;
     color: #FFF;
     font-size: 16px;
     transition: 0.3s all;
@@ -191,7 +243,7 @@
 }
 
 .showAllButton:hover{
-	background-color: #7124ef;
+	background-color: #1f2044;
 	transition: 0.3s all;
 	transform: translate(2px, -2px);
 }

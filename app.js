@@ -54,6 +54,21 @@ app.get('/admins/:email/:password', (req, res) => {
     });
 })
 
+/***************************************************************
+ *                          Orders
+***************************************************************/
+
+app.get('/orders', (req, res) => {
+    const sql = 'SELECT * FROM orders';
+    connection.query(sql, (error, results) => {
+        if(error) throw error;
+        if(results.length > 0){
+            res.json(results);
+        }else{
+            res.json('no_results')
+        }
+    });
+});
 
 /***************************************************************
  *                          Port 

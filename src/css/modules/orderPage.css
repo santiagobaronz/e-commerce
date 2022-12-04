@@ -1,0 +1,262 @@
+.orderMetrics{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 30px;
+    margin-bottom: 50px;
+}
+
+.metric_card{
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    transition: 0.2s all;
+    background-color: #46495e;
+}
+
+.findOrderSection{
+    width: 85%;
+    margin: auto;
+}
+
+.findOrderSection > h1{
+    margin-bottom: 30px;
+}
+
+.findInput{
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    column-gap: 30px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+.findInput input{
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    padding-left: 20px;
+    color: var(--black);
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.findOrderSection > h2{
+    font-size: 35px;
+}
+
+.totalOrders{
+    text-align: left;
+    color: var(--black);
+    margin-bottom: 30px;
+}
+
+#filterButton{
+    position: absolute;
+    right: 0px;
+    width: 80px;
+    height: 50px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #1f2044;
+    cursor: pointer;
+}
+
+#filterButton img{
+    width: 30px;
+    margin-top: 5px;
+}
+
+.orderBox{
+    width: 100%;
+    height: 90px;
+    background-color: #1f213a;
+    padding: 0 50px;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 2fr 1.3fr 1.2fr;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.2s all;
+    box-shadow: 1px 1px 25px rgb(219 219 219 / 80%);
+}
+
+.orderBox:hover, .metric_card:hover{
+    transform: translate(2px,-2px);
+    transition: 0.2s all;
+}
+
+.arrow-order{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.orderCode{
+    color: var(--white);
+}
+
+.orderCode::before{
+    content: "#";
+    color:#8588a5;
+}
+
+.orderDate{
+    color: #ced0e9;
+    display: inline-block;
+}
+
+.order-item{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-weight: 400;
+    transition: 0.3s all;
+}
+
+.icon-menu{
+    margin-right: 15px;
+    color: #ebedf531;
+}
+
+.orderInfo{
+    color: #ebedf5;
+    font-weight: 400;
+}
+
+.orderPrice{
+    color: var(--white);
+    font-size: 16px;
+}
+
+.orderStatus{
+    text-align: center;
+    width: 180px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.pending{
+    color: #e98718;
+    font-weight: 600;
+    background-color: #e9881822;
+    display: inline-block;
+    padding: 13px 45px 13px 40px;
+}
+
+.pending::before{
+    content: '';
+    background-color: #e98718;
+    width: 12px;
+    height: 12px;
+    display: block;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.paid{
+    color: #32d49e;
+    font-weight: 600;
+    background-color: #32d49e43;
+    display: inline-block;
+    padding: 13px 45px;
+}
+
+.paid::before{
+    content: '';
+    background-color: #32d49e;
+    width: 12px;
+    height: 12px;
+    display: block;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+.showAllButton{
+    width: 50%;
+    margin: 40px auto;
+    display: block;
+    height: 60px;
+    border-radius: 15px;
+    background-color: var(--indigo);
+    color: #FFF;
+    font-size: 16px;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+.showAllButton:hover{
+	background-color: #7124ef;
+	transition: 0.3s all;
+	transform: translate(2px, -2px);
+}
+
+.go-up{
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	background-color: var(--indigo);
+	border-radius: 15px;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	opacity: 0;
+	transition: 0.5s;
+}
+.go-up img{
+	width: 100%;
+	margin-top: -2px;
+	transform: rotate(180deg);
+}
+
+@media only screen and (max-width: 1440px){
+    .adjustWidth{
+        width: var(--aw1440) !important;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    .findUserSection{
+        overflow-x: hidden;
+    }
+    #results{
+        width: 100%;
+        overflow-y: scroll;
+        display: block;
+    }
+    .findInput{
+        display: block;
+    }
+    .findInput label, .findInput input{
+        width: 100%;
+    }
+
+    .findInput input{
+        position: relative;
+    }
+
+    #filterButton{
+        position: absolute;
+        right: 0px;
+        bottom: 0;
+        width: 80px;
+        height: 50px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        background-color: var(--indigo);
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    
+}
+
+@media only screen and (max-width: 425px){}
+
+@media only screen and (max-width: 320px){}

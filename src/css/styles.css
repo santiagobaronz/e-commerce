@@ -65,6 +65,76 @@
     margin:auto;
 }
 
+/*Top menu*/
+
+header{
+    background-color: #080c17
+}
+
+nav{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 30px;
+    height: 100px;
+}
+
+.logo-ud-identity{
+    display: flex;
+    cursor: pointer;
+}
+
+.logo-ud-identity > img{
+    width: 50px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: auto 0;
+}
+
+.logo-ud-identity > span {
+    margin: auto 80px auto 20px;
+    color: var(--white);
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;    
+}
+
+nav > ul{
+    text-align: right;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+nav > ul > li{
+    margin-left: 80px;
+    position: relative;
+    cursor: pointer;
+}
+
+#login-button{
+    background-color: transparent;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 25px;
+    border: 2px solid #ffcf00 !important;
+    transition: 0.1s all;
+}
+
+#login-button:hover{
+    background-color: #ffcf00;
+    color: var(--black);
+    transition: 0.1s all;
+}
+
+.menu-icon{
+    position: absolute;
+    top: 0;
+}
 
 /* Footer */
 

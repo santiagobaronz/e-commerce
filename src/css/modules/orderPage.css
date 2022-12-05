@@ -1,7 +1,7 @@
 .findOrderSection{
-    width: 85%;
+    width: 100%;
     margin: auto;
-    padding: 50px 0;
+    padding: 100px 0 250px 0;
     color: var(--white);
 }
 
@@ -97,7 +97,7 @@
 
 .findInput{
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 2fr 6fr;
     column-gap: 30px;
     margin-bottom: 10px;
     position: relative;

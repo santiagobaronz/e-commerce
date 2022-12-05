@@ -82,7 +82,7 @@ export const orderPage = async (orderToFind = "") => {
     <div id='results'></div>
 
     ${createButton()}
-    
+
     `
 
     mainContent.append(findOrderSection);

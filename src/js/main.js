@@ -2,6 +2,7 @@
 
 import { homePage } from "./modules/homePage.js";
 import { loginPage } from "./modules/loginPage.js";
+import { popUpAlert } from "./modules/popAlert.js";
 
 /* First const get the objet to use in modules
     and the function deletes all the contents of the parent container */
@@ -30,4 +31,15 @@ loginButton.addEventListener("click", () => {
 footerLogin.addEventListener("click", () => {
     loginPage();
 })
+
+
+const instagramLink = document.querySelector("#instagramLink");
+const whatsappLink = document.querySelector("#whatsappLink")
+instagramLink.addEventListener("click", () => {
+    popUpAlert("¡Ha ocurrido un problema!","Estamos en fase de pruebas, aún no tenemos Instagram","warning")
+})
+whatsappLink.addEventListener("click", () => {
+    popUpAlert("¡Ha ocurrido un problema!","Estamos en fase de pruebas, aún no tenemos Whatasapp","warning")
+})
+
 

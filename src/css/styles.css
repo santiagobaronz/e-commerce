@@ -75,7 +75,7 @@ nav{
     width: 80%;
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 2fr 3fr;
     column-gap: 30px;
     height: 100px;
 }
@@ -86,7 +86,7 @@ nav{
 }
 
 .logo-ud-identity > img{
-    width: 50px;
+    width: 40px;
     border-radius: 10px;
     display: inline-block;
     margin: auto 0;
@@ -97,7 +97,7 @@ nav{
     color: var(--white);
     font-size: 18px;
     text-align: center;
-    font-weight: 600;    
+    font-weight: 600;
 }
 
 nav > ul{

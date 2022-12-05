@@ -37,6 +37,21 @@ app.get('/', (req, res) => {
     res.sendFile('./index.html')
 })
 
+app.get('/home', (req, res) => {
+    res.setHeader('Content-type', 'text/html');
+    res.sendFile(__dirname + '/index.html')
+})
+
+app.get('/login', (req, res) => {
+    res.setHeader('Content-type', 'text/html');
+    res.sendFile(__dirname + '/index.html')
+})
+
+app.get('/dashboard', (req, res) => {
+    res.setHeader('Content-type', 'text/html');
+    res.sendFile(__dirname + '/index.html')
+})
+
 /***************************************************************
  *                          Visits 
 ***************************************************************/

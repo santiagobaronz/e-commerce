@@ -2,6 +2,7 @@
 
 import { homePage } from "./modules/homePage.js";
 import { loginPage } from "./modules/loginPage.js";
+import { orderPage } from "./modules/orderPage.js";
 import { popUpAlert } from "./modules/popAlert.js";
 
 /* First const get the objet to use in modules
@@ -17,7 +18,27 @@ export const cleanContainer = () => {
 /* Main content is charged when the window is loaded */
 
 window.addEventListener("load", () => {
-    homePage();
+
+    let url = location.href;
+    url = url.split("/").reverse()[0];
+    console.log(url)
+
+    switch(url){
+        case "":
+            homePage();
+            history.pushState(null, "", "home");
+            break;
+        case "home":
+            homePage();
+            history.pushState(null, "", "home");
+            break;
+        case "login":
+            loginPage();
+            break;
+        case "dashboard":
+            orderPage();
+            break;
+    }
     fetch("/visits/update");
 })
 
@@ -25,12 +46,13 @@ window.addEventListener("load", () => {
 
 const loginButton = document.querySelector("#login-button");
 const footerLogin = document.querySelector("#footer-login")
-loginButton.addEventListener("click", () => {
-    loginPage();
-})
-footerLogin.addEventListener("click", () => {
-    loginPage();
-})
+loginButton.addEventListener("click", () => {loginPage();})
+footerLogin.addEventListener("click", () => {loginPage();})
+
+const iconHome = document.querySelector(".logo-ud-identity");
+const linkHome = document.querySelector("#link_home");
+iconHome.addEventListener("click", () => {homePage()});
+linkHome.addEventListener("click", () => {homePage()});
 
 
 const instagramLink = document.querySelector("#instagramLink");

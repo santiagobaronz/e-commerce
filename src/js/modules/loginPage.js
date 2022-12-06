@@ -11,7 +11,7 @@ export const loginPage = () => {
         return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + name.replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
     }
 
-    let loginCookie = readCookie( "logeo");
+    let loginCookie = readCookie( "logueo");
 
     if(loginCookie){
         orderPage();
@@ -51,7 +51,7 @@ export const loginPage = () => {
                 .then(status => {
     
                     if(status){
-                        document.cookie = "logeo=true; max-age=300; path=/";
+                        document.cookie = "logueo=true; max-age=300; path=/";
                         orderPage();
                     }else{
                         errorMessage.style.display = "block";

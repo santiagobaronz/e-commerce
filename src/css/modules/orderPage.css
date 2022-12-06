@@ -5,8 +5,9 @@
     color: var(--white);
 }
 
-.findOrderSection > h1{
+.findOrderSection > div > h1{
     margin-bottom: 30px;
+    display: inline-block;
 }
 
 .orderMetrics{
@@ -284,6 +285,21 @@
 	width: 100%;
 	margin-top: -2px;
 	transform: rotate(180deg);
+}
+
+.logoutButton {
+    float: right;
+    background-color: var(--red-UD);
+    padding: 10px 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.logoutButton:hover{
+    float: right;
+    background-color: #5a1515;
+    transition: 0.2s all;
 }
 
 @media only screen and (max-width: 1440px){

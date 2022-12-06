@@ -1,4 +1,5 @@
 import { cleanContainer, mainContent } from "../main.js";
+import { homePage } from "./homePage.js";
 import { loginPage } from "./loginPage.js";
 import { popUpAlert } from "./popAlert.js";
 
@@ -11,7 +12,7 @@ export const orderPage = async (orderToFind = "") => {
         return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + name.replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
     }
 
-    let loginCookie = readCookie( "logeo");
+    let loginCookie = readCookie( "logueo");
 
     if(loginCookie){
 
@@ -47,7 +48,11 @@ export const orderPage = async (orderToFind = "") => {
         findOrderSection.className = "findOrderSection";
         findOrderSection.innerHTML = `
 
-        <h1>Estadísticas de la tienda</h1>
+        <div>
+            <h1>Estadísticas de la tienda</h1>
+            <span class='logoutButton'>Cerrar sesión</span>
+        </div>
+        
 
         <div class='orderMetrics'>
             <div class='metric_card metric_message'>
@@ -102,7 +107,8 @@ export const orderPage = async (orderToFind = "") => {
         const orderList = document.querySelector("#results");
         const filterInput = document.querySelector("#filterInput")
         const filterButton = document.querySelector("#filterButton");
-        const showAllButton = document.querySelector(".showAllButton")
+        const showAllButton = document.querySelector(".showAllButton");
+        const logoutButton = document.querySelector(".logoutButton");
 
         filterButton.addEventListener('click', () => {
             if(filterInput.value != ""){
@@ -118,6 +124,12 @@ export const orderPage = async (orderToFind = "") => {
                 orderPage(orderToFind);
             }
         });
+
+        logoutButton.addEventListener("click", () => {
+            document.cookie = "logueo=; max-age=0";
+            homePage();
+        })
+        
 
         if(fetchURL != "/orders"){
             showAllButton.addEventListener("click", () => {

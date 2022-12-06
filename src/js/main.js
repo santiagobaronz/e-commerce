@@ -24,7 +24,6 @@ window.addEventListener("load", () => {
 
     let url = location.href;
     url = url.split("/").reverse()[0];
-    console.log(url)
 
     switch(url){
         case "":

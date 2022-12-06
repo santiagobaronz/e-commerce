@@ -17,6 +17,8 @@ export const orderPage = async (orderToFind = "") => {
 
         const main = document.querySelector("main")
         main.style.backgroundColor = "#080c17"
+        const loginButton = document.querySelector("#login-button");
+        loginButton.style.display = "none";
 
         let orderArray = [], fetchURL, countOrders, countVisits;
 

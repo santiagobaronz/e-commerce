@@ -13,6 +13,9 @@ export const cleanContainer = () => {
     mainContent.innerHTML = "";
     const main = document.querySelector("main")
     main.style.backgroundColor = "var(--white)"
+
+    const loginButton = document.querySelector("#login-button");
+    loginButton.style.display = "inline-block";
 }
 
 /* Main content is charged when the window is loaded */

@@ -1,41 +1,98 @@
 import { cleanContainer, mainContent } from "../main.js";
 import { popUpAlert } from "./popAlert.js";
 
-export const homePage = () => {
+export const homePage = async () => {
 
     history.pushState(null, "", "home");
     cleanContainer()
 
-    const arrayPrueba = [
-        {
-            nombre: "Perro 1",
-            linkImagen: "https://i.pinimg.com/236x/e3/9a/48/e39a48eddff28efb01da216ef7fea6fc--teacup-pomeranian-puppy-pomeranian-for-adoption.jpg"
-        },{
-            nombre: "Perro 2",
-            linkImagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsfBG8QGU9_PC6Ze6pJdAU8O8vpNP80-ICghPr6PGNvdLIRdfi3TTAtfDFB5f5uB4YK6E&usqp=CAU"
-        }];
+    let arrayProducts;
+
+    await fetch("/products")
+    .then(data => data.json())
+    .then(data => arrayProducts = data);
 
     mainContent.innerHTML = `
-    
-    <h1>Esto son los productos</h1>
 
-    <div class='divContenedor'>
+    <img src='./src/assets/banner.jpg' class='main-banner'>
 
+    <div class='featured'>
+        <h2>Nuestros últimos lanzamientos</h2>
+        <p>¡Conoce nuestros productos más recientes!</p>
+        <div class='featured-products'></div>
     </div>
 
-    `;
+    <div class='clothes'>
+        <h2>Colección de ropa de la Universidad Distrital</h2>
+        <p>¡Ropa para vestir tu verdadera identidad universitaria!</p>
+        <div class='clothes-products'></div>
+    </div>
 
-    const divContenedor = document.querySelector(".divContenedor");
+    <div class='accessories'>
+        <h2>Colección de accesorios de la Universidad Distrital</h2>
+        <p>¡Complementos para tu look universitario!</p>
+        <div class='accessories-products'></div>
+    </div>
+    
 
-    arrayPrueba.forEach(element => {
-        const parrafo = document.createElement("p");
-        parrafo.className = "cajaPerros"
-        parrafo.innerHTML = `<div>
-        
-            <img src="${element.linkImagen}" width='100px'>
-            Nombre del producto: ${element.nombre}
-        
-        </div>`
-        divContenedor.append(parrafo);
+    `
+
+    const featuredProducts = document.querySelector(".featured-products");
+    const clothesProducts = document.querySelector(".clothes-products")
+    const accessoriesProducts = document.querySelector(".accessories-products")
+
+    const getImage = product => {
+        var image = JSON.parse(product.img_producto);
+        return(image.images.preview)
+    }
+    
+    arrayProducts.forEach(product => {
+
+        if(product.destacado == "TRUE"){
+            const productBox = document.createElement("div");
+            productBox.className = "productBox";
+            productBox.innerHTML = `
+            
+            <img src='${getImage(product)}'>
+    
+            <div>
+                <h3>${product.nombre_producto}</h3>
+                <p>$${product.precio_producto.toLocaleString("en")}</p>
+            </div>`;
+    
+            featuredProducts.append(productBox);
+        }
+
+        if(product.categoria_producto == "ROPA"){
+            const productBox = document.createElement("div");
+            productBox.className = "productBox";
+            productBox.innerHTML = `
+            
+            <img src='${getImage(product)}'>
+    
+            <div>
+                <h3>${product.nombre_producto}</h3>
+                <p>$${product.precio_producto.toLocaleString("en")}</p>
+            </div>`;
+    
+            clothesProducts.append(productBox);
+        }
+
+        if(product.categoria_producto == "ACCESORIO"){
+            const productBox = document.createElement("div");
+            productBox.className = "productBox";
+            productBox.innerHTML = `
+            
+            <img src='${getImage(product)}'>
+    
+            <div>
+                <h3>${product.nombre_producto}</h3>
+                <p>$${product.precio_producto.toLocaleString("en")}</p>
+            </div>`;
+    
+            accessoriesProducts.append(productBox);
+        }
     });
+
+
 }

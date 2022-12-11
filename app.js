@@ -116,6 +116,22 @@ app.get('/admins/:email/:password', (req, res) => {
 })
 
 /***************************************************************
+ *                          Products 
+***************************************************************/
+
+app.get('/products' , (req, res) => {
+    const sql = 'SELECT * FROM products';
+    connection.query(sql, (error, results) => {
+        if(error) throw error;
+        if(results.length > 0){
+            res.json(results);
+        }else{
+            res.json('no_results')
+        }
+    });
+})
+
+/***************************************************************
  *                          Orders
 ***************************************************************/
 

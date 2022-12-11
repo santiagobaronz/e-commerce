@@ -1,4 +1,5 @@
 import { cleanContainer, mainContent } from "../main.js";
+import { homePage } from "./homePage.js";
 import { popUpAlert } from "./popAlert.js";
 
 export const singleProduct = async (productId) => {
@@ -68,6 +69,8 @@ export const singleProduct = async (productId) => {
 
 
     mainContent.innerHTML = `
+
+    <p class='goBack'>< Volver al inicio</p>
 
     <div class='productPage'>
         <div class='productInfo'>
@@ -197,6 +200,15 @@ export const singleProduct = async (productId) => {
         document.querySelector("#productDetails").innerHTML = `${product[0].nombre_producto} x ${maxItems.value}`
         document.querySelector("#tableProductPrice").innerHTML = `$${price.toLocaleString("en")}`;
         document.querySelector("#totalPrice").innerHTML = `$${priceAndShipping.toLocaleString("en")}`;
+    })
+
+    /**
+     * Boton para volver al menu
+     */
+
+    const goBackButton = document.querySelector(".goBack");
+    goBackButton.addEventListener("click", () => {
+        homePage();
     })
 
 

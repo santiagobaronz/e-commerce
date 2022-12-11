@@ -125,7 +125,7 @@ export const singleProduct = async (productId) => {
                 </div>
                 
                 <label>Cantida de productos:</label>
-                <input class='numItems' type='number' min='1' max='${getMaxProducts()}' value="1">
+                <input class='numItems' type='number' min='1' max='${getMaxProducts()}' placeholder="1">
 
 
                 <div class='finalPrice'>
@@ -193,7 +193,9 @@ export const singleProduct = async (productId) => {
      * Aqui actualizamos el precio segun la cantidad seleccionada
      */
 
-    maxItems.addEventListener("change", () => {
+    maxItems.addEventListener("change", (e) => {
+
+        e.preventDefault();
 
         const price = product[0].precio_producto * maxItems.value;
         const priceAndShipping = price + 6500;
@@ -209,6 +211,25 @@ export const singleProduct = async (productId) => {
     const goBackButton = document.querySelector(".goBack");
     goBackButton.addEventListener("click", () => {
         homePage();
+    })
+
+    /**
+     * Solicitar producto
+     */
+
+    const sendButton = document.querySelector(".buyButton");
+    
+    sendButton.addEventListener("click", (e) => {
+        
+        e.preventDefault();
+
+        if(parseInt(maxItems.value) >= 1 && parseInt(maxItems.value) <= 
+        parseInt(maxItems.getAttribute("max"))){
+            
+            
+
+        }
+
     })
 
 

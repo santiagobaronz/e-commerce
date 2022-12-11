@@ -1,6 +1,7 @@
 import { cleanContainer, mainContent } from "../main.js";
 import { homePage } from "./homePage.js";
 import { popUpAlert } from "./popAlert.js";
+import { purchase } from "./purchase.js";
 
 export const singleProduct = async (productId) => {
 
@@ -146,7 +147,7 @@ export const singleProduct = async (productId) => {
                     </div>
                 </div>
 
-                <input type="submit" class="buyButton disabled" value="Comprar ahora" disabled>
+                <input type="submit" class="buyButton" value="Comprar ahora" disabled>
 
             </form>
         </div>
@@ -169,6 +170,8 @@ export const singleProduct = async (productId) => {
     // Aqui si hay un cambio al elegir el color, activamos la tabla
     // de precios y activamos el boton
 
+    let colorToSelect = "";
+
     const finalPurchase = () => {
         document.querySelector(".buyButton").disabled = false;
         document.querySelector(".finalPrice").style.display = "block";
@@ -176,16 +179,19 @@ export const singleProduct = async (productId) => {
 
     const principal = document.querySelector("#principal");
     principal.addEventListener("change", () => {
+        colorToSelect = "primario"
         finalPurchase();
     })
 
     const secundario = document.querySelector("#secundario");
     secundario.addEventListener("change", () => {
+        colorToSelect = "secundario"
         finalPurchase();
     })
 
     const terciario = document.querySelector("#terciario");
     terciario.addEventListener("change", () => {
+        colorToSelect = "terciario"
         finalPurchase();
     })
 
@@ -225,12 +231,15 @@ export const singleProduct = async (productId) => {
 
         if(parseInt(maxItems.value) >= 1 && parseInt(maxItems.value) <= 
         parseInt(maxItems.getAttribute("max"))){
-            
-            
+
+            if(product[0].categoria_producto == "ROPA"){
+                purchase(product[0].id, maxItems.value, size.value , colorToSelect);
+            }
+
+            if(product[0].categoria_producto == "ACCESORIO"){
+                purchase(product[0].id, parseInt(maxItems.value), "",colorToSelect);
+            }
 
         }
-
     })
-
-
 }

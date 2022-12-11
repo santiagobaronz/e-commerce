@@ -41,9 +41,9 @@ window.addEventListener("load", () => {
         case "dashboard":
             orderPage();
             break;
-        case "product":
+        default:
             homePage();
-            break;
+            break
     }
     fetch("/visits/update");
 })

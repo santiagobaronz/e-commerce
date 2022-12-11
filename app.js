@@ -57,6 +57,11 @@ app.get('/product', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/purchase', (req, res) => {
+    res.setHeader('Content-type', 'text/html');
+    res.sendFile(__dirname + '/index.html')
+})
+
 /***************************************************************
  *                          Visits 
 ***************************************************************/

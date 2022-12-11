@@ -1,0 +1,103 @@
+.sendProduct{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.card-product {
+    display: flex;
+    height: 200px;
+    background-color: #ccc5;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 140px;
+}
+
+.card-product > img{
+    width: 30%;
+    margin: 10px 10px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.infoProduct h2{
+    margin-bottom: 40px;
+}
+
+.info-card{
+    padding: 20px 70px 20px 20px;
+}
+
+.info-card > p{
+    margin-bottom: 16px;
+}
+
+.info-card > p:first-child{
+    font-weight: 600;
+}
+
+.infoUser > form{
+    padding: 0px 100px 0 50px;
+}
+
+.infoUser h2 {
+    margin-bottom: 30px;
+    margin-left: 50px;
+}
+
+.infoUser > form > p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.shippingInfo{
+    margin-top: 50px !important;
+}
+
+.infoUser > form > input{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc9;
+}
+
+.unitary-box-form{
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 25px 10px 15px 10px;
+    position: relative;
+}
+
+.unitary-box-form label{
+    font-size: 15px;
+    color: #484848;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    background-color: #FFF;
+    padding: 0 10px;
+}
+
+.unitary-box-form input{
+    font-size: 17px;
+    color: #3b3b3b;
+    font-weight: normal;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 100%;
+}
+.rowForm{
+    display: flex;
+}
+
+.rowForm > .unitary-box-form:nth-child(1),
+.rowForm > .unitary-box-form:nth-child(2){
+    margin-right: 20px;
+} 

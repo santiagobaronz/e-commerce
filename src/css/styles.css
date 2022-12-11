@@ -4,6 +4,7 @@
 @import url('./modules/orderPage.css');
 @import url('./modules/homePage.css');
 @import url('./modules/singleProduct.css');
+@import url('./modules/purchase.css');
 
 * {
 	padding: 0;

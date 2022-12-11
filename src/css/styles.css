@@ -3,6 +3,7 @@
 @import url('./modules/loginPage.css');
 @import url('./modules/orderPage.css');
 @import url('./modules/homePage.css');
+@import url('./modules/singleProduct.css');
 
 * {
 	padding: 0;

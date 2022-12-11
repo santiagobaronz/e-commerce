@@ -1,5 +1,6 @@
 import { cleanContainer, mainContent } from "../main.js";
 import { popUpAlert } from "./popAlert.js";
+import { singleProduct } from "./singleProduct.js";
 
 export const homePage = async () => {
 
@@ -51,6 +52,7 @@ export const homePage = async () => {
         if(product.destacado == "TRUE"){
             const productBox = document.createElement("div");
             productBox.className = "productBox";
+            productBox.id = product.id;
             productBox.innerHTML = `
             
             <img src='${getImage(product)}'>
@@ -66,6 +68,7 @@ export const homePage = async () => {
         if(product.categoria_producto == "ROPA"){
             const productBox = document.createElement("div");
             productBox.className = "productBox";
+            productBox.id = product.id;
             productBox.innerHTML = `
             
             <img src='${getImage(product)}'>
@@ -81,6 +84,7 @@ export const homePage = async () => {
         if(product.categoria_producto == "ACCESORIO"){
             const productBox = document.createElement("div");
             productBox.className = "productBox";
+            productBox.id = product.id;
             productBox.innerHTML = `
             
             <img src='${getImage(product)}'>
@@ -92,6 +96,13 @@ export const homePage = async () => {
     
             accessoriesProducts.append(productBox);
         }
+    });
+
+    const eventProducts = document.querySelectorAll(".productBox")
+    eventProducts.forEach(product => {
+        product.addEventListener("click", () => {
+            singleProduct(product.id);
+        })
     });
 
 

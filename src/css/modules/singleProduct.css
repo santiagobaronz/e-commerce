@@ -1,0 +1,229 @@
+.productPage{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.productInfo{
+    padding: 30px;
+}
+
+.imgsProduct{
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    column-gap: 20px;
+}
+
+.mainImg{
+    padding: 10px;
+    background-color: #e9e9e7;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.smallImages > img{
+    width: 150px;
+    cursor: pointer;
+    background-color: #e9e9e7;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.productDesc{
+    margin-top: 30px;
+    padding: 50px 50px 0 0;
+    border-top: 1px solid rgba(204, 204, 204, 0.434);
+    border-right: 1px solid rgba(204, 204, 204, 0.434);
+    border-top-right-radius: 25px;
+}
+
+.productDesc > p {
+    margin-top: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.485) ;
+    margin-bottom: 30px;
+}
+
+
+.productForm{
+    margin-top: 30px;
+    padding: 60px;
+    border-right: 1px solid rgba(204, 204, 204, 0.434);
+    border-left: 1px solid rgba(204, 204, 204, 0.434);
+    border-top: 1px solid rgba(204, 204, 204, 0.434);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.productForm > span{
+    color: rgba(0,0,0,.55);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.productName{
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.productPrice{
+    font-size: 50px;
+    font-weight: 300;
+}
+
+.productPrice::after {
+    content: '(IVA incluido)';
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.shipping-service, .accessbox{
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background-color: #3ba97038;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.accessbox{
+    background-color: #ccc5;
+}
+
+.shipping-service span{
+    font-size: 45px;
+    margin: auto 20px;
+    color: #0baa58;
+}
+
+.accessbox span{
+    margin: auto 20px;
+    color: #ffbf00;
+}
+
+.shipping-service p{
+    margin-left: 20px;
+}
+
+.formProduct label{
+    width: 100%;
+}
+
+.formProduct select{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc9;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.colors{
+    display: flex;
+}
+
+.colors > div> label{
+    width: 160px;
+    background-color: var(--white);
+    border: 1px solid #ccc9;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.colors > div> label:hover{
+    background: #1f2044;
+    color: #FFF;
+    transition: 0.3s all;
+}
+
+.colors input[type="radio"]:checked + label{
+    background: #1f2044;
+    color: #FFF;
+}
+
+.colors > div > input{
+    display: none;
+}
+
+.numItems {
+    width: 15%;
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc9;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    margin: 10px 0px 30px 15px;
+}
+
+.buyButton{
+    width: 100%;
+    border-radius: 0 !important;
+    height: 60px !important;
+    background-color: #ffcf00;
+    color: var(--white);
+    border-bottom: 5px solid #1f2044;
+    border-right: 5px solid #1f2044;
+    color: #1f2044;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.1s all;
+}
+
+.buyButton:hover{
+    background-color: #eec100;
+    transition: 0.1s all;
+}
+
+.finalPrice{
+    display: none;
+}
+
+.productList{
+    display: grid;
+    grid-template-columns: 2fr 1.3fr;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #e9e9e791 ;
+}
+
+.finalPrice h4{
+    margin-bottom: 15px;
+}
+
+.productList{
+    margin-bottom: 40px;
+}
+
+.tableTitle{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.rightSide{
+    border-left: 1px solid #ccc9;
+    padding-left: 20px;
+}

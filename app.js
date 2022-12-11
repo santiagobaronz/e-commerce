@@ -52,6 +52,11 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/product', (req, res) => {
+    res.setHeader('Content-type', 'text/html');
+    res.sendFile(__dirname + '/index.html')
+})
+
 /***************************************************************
  *                          Visits 
 ***************************************************************/
@@ -130,6 +135,19 @@ app.get('/products' , (req, res) => {
         }
     });
 })
+
+app.get('/product/:id', (req, res) => {
+    const {id} = req.params;
+    const sql = `SELECT * FROM products WHERE id = '${id}'`;
+    connection.query(sql, (error, results) => {
+        if(error) throw error;
+        if(results.length > 0){
+            res.json(results);
+        }else{
+            res.json('no_results')
+        }
+    });
+});
 
 /***************************************************************
  *                          Orders

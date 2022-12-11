@@ -4,6 +4,7 @@ import { homePage } from "./modules/homePage.js";
 import { loginPage } from "./modules/loginPage.js";
 import { orderPage } from "./modules/orderPage.js";
 import { popUpAlert } from "./modules/popAlert.js";
+import { singleProduct } from "./modules/singleProduct.js";
 
 /* First const get the objet to use in modules
     and the function deletes all the contents of the parent container */
@@ -39,6 +40,9 @@ window.addEventListener("load", () => {
             break;
         case "dashboard":
             orderPage();
+            break;
+        case "product":
+            homePage();
             break;
     }
     fetch("/visits/update");

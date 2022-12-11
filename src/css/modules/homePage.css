@@ -36,6 +36,7 @@
 }
 
 .productBox:hover{
+    box-shadow: 1px 1px 25px rgb(219 219 219 / 100%);
     transform: translate(2px,-2px);
     transition: 0.2s all;
 }

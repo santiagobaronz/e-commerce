@@ -38,7 +38,6 @@ export const orderPage = async (orderToFind = "") => {
         await fetch('/metrics')
         .then(data => data.json())
         .then(data => {
-            console.log(data)
             countOrders = data[0].pedidos;
             countSoldProducts = data[0].productos_vendidos;
             countProfits = data[0].ganancias_totales
@@ -154,8 +153,6 @@ export const orderPage = async (orderToFind = "") => {
 
         if(orderArray != "no_results"){
 
-
-
             orderArray.forEach(order => {
 
             const orderBox = document.createElement("div");
@@ -188,6 +185,39 @@ export const orderPage = async (orderToFind = "") => {
             <span class="material-icons-round icon-menu arrow-order">keyboard_arrow_right</span>
             `
             orderList.append(orderBox);
+
+            const orderInfo = document.createElement("div");
+            orderInfo.className = "orderExtraInfo noVisible";
+            orderInfo.innerHTML = `
+            
+            <h2>Información del pedido</h2>
+
+            <div class='orderTable'>
+                <div class='firstRow-order'>
+                    <p><span class='detailTitle'>Producto solicitado:</span> ${order.producto}</p>
+                    <p><span class='detailTitle'>Información del producto:</span> ${order.informacion_producto}</p>
+                    <p><span class='detailTitle'>Cantidad de productos:</span> ${order.cantidad}</p>
+                    <p><span class='detailTitle'>Precio pagado:</span> ${order.precio_total}</p>
+                </div>
+                <div class='firstRow-order'>
+                    <p><span class='detailTitle'>Nombre del cliente:</span> ${order.nombre_cliente}</p>
+                    <p><span class='detailTitle'>Cédula del cliente:</span> ${order.cedula_cliente}</p>
+                    <p><span class='detailTitle'>Dirección del cliente:</span> ${order.direccion_cliente}</p>
+                    <p><span class='detailTitle'>Teléfono del cliente:</span> ${order.telefono_cliente}</p>
+                </div>
+            </div>
+            `
+
+            orderList.append(orderInfo);
+
+            orderBox.addEventListener("click", () => {
+                if(orderInfo.classList.contains("noVisible")){
+                    orderInfo.classList.remove("noVisible")
+                }else{
+                    orderInfo.classList.add("noVisible")
+                }
+                
+            })
 
             })
         }

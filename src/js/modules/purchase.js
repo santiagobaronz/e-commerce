@@ -39,7 +39,7 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
     const infoProduct = () => {
         
         if(productToBuy[0].categoria_producto == "ROPA"){
-            return `Talla ${sizeProduct} | Color: ${color}`
+            return `Talla ${sizeProduct} | Color ${color}`
         }else{
             return `Color: ${color}`
         }
@@ -52,7 +52,7 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
 
     mainContent.innerHTML = `
     
-    <p class='goBack'>< Volver al inicio</p>
+    <p class='goBack'>Inicio < Volver al producto </p>
     
     <div class='sendProduct'>
 

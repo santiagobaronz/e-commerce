@@ -1,7 +1,7 @@
 .findOrderSection{
     width: 100%;
     margin: auto;
-    padding: 100px 0 250px 0;
+    padding: 100px 0 100px 0;
     color: var(--white);
 }
 
@@ -247,6 +247,41 @@
     border-radius: 50%;
     display: inline-block;
     margin-right: 10px;
+}
+
+
+.orderExtraInfo{
+    background-color: #1f213a;
+    border-radius: 10px;
+    padding: 50px 50px;
+    margin-bottom: 70px;
+}
+
+.noVisible{
+    display: none;
+}
+
+.orderExtraInfo h2{
+    margin-bottom: 30px;
+}
+
+.orderTable{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    column-gap: 30px;
+}
+
+.orderTable p{
+    color: #ced0e9;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc2;
+    margin-right: 50px;
+}
+
+.detailTitle{
+    color: var(--white) !important;
+    margin-right: 5px;
 }
 
 

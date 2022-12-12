@@ -1,4 +1,5 @@
 import { cleanContainer, mainContent } from "../main.js";
+import { homePage } from "./homePage.js";
 import { popUpAlert } from "./popAlert.js";
 import { singleProduct } from "./singleProduct.js";
 
@@ -6,8 +7,6 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
 
     history.pushState(null, "", "purchase");
     cleanContainer()
-
-    console.log(idProduct, totalProducts, sizeProduct, colorProduct);
 
     let productToBuy = []
 
@@ -83,12 +82,12 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
 
                 <div class='unitary-box-form'>
                     <label>Dirección</label>
-                    <input type='text' id='adress' placeholder='Carrera 75 # 102-35'>
+                    <input type='text' id='address' placeholder='Carrera 75 # 102-35'>
                 </div>
 
                 <div class='unitary-box-form'>
                     <label>Apartamento, local, etc. (opcional)</label>
-                    <input type='text' id='adressExtra' placeholder='Apto 201 Edificio Los Comuneros'>
+                    <input type='text' id='addressExtra' placeholder='Apto 201 Edificio Los Comuneros'>
                 </div>
 
                 <div class='rowForm'>
@@ -163,6 +162,45 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
         buyProduct();
     })
 
+    const getDate = () => {
+        /* Creating a new date object and assigning it to the variable date. Then it is selecting the
+        element with the class navbar-date and assigning it to the variable navbarDate. Then it is
+        creating two objects, abbreviatedDays and months. */
+        const date = new Date();
+        const navbarDate = document.querySelector('.navbar-date');
+
+        const abbreviatedDays = {
+            0: "Domingo", 1: "Lunes", 2: "Martes", 3: "Miércoles",
+            4: "Jueves", 5: "Viernes", 6: "Sábado"
+        }
+
+        const months = {
+            0: "Enero", 1: "Febrero", 2: "Marzo", 3: "Abril",
+            4: "Mayo", 5: "Junio", 6: "Julio", 7: "Agosto",
+            8: "Septiembre", 9: "Octubre", 10: "Noviembre", 11: "Diciembre"
+        }
+
+        /* Getting the day, month, date, year and then putting it all together in a string. */
+        const monthOnDate = months[date.getMonth()];
+        const numberOnDate = date.getDate();
+        const yearOnDate = date.getFullYear();
+        const finalDate = `${monthOnDate} ${numberOnDate} de ${yearOnDate}`;
+
+        return finalDate;
+    }
+    
+
+    function createOrderCode(){
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const charactersLength = characters.length;
+        let result = "";
+          for (let i = 0; i < 6; i++) {
+              result += characters.charAt(Math.floor(Math.random() * charactersLength));
+          }
+      
+        return result;
+    }
+
     const buyProduct = () =>{
 
         // Obtenemos los inputs
@@ -170,15 +208,48 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
         const contactInfo = document.querySelector("#contactInfo").value;
         const fullName = document.querySelector("#fullName").value;
         const doc = document.querySelector("#document").value;
-        const adress = document.querySelector("#adress").value;
-        const adressExtra = document.querySelector("#adressExtra").value;
+        const address = document.querySelector("#address").value;
+        const addressExtra = document.querySelector("#addressExtra").value;
         const phoneNumber = document.querySelector("#phoneNumber").value;
         let errorMessage = document.querySelector("#error-form")
 
         if(contactInfo != "" && fullName != "" && doc != "" &&
-            adress != "" && phoneNumber != ""){
+            address != "" && phoneNumber != ""){
                 errorMessage.style.display = "none";
 
+                const infoPurchase = {
+                    orderCode: createOrderCode(),
+                    date: getDate(),
+                    idProduct: idProduct,
+                    nameProduct: productToBuy[0].nombreCompleto_producto,
+                    descProduct: infoProduct(),
+                    totalProducts: totalProducts,
+                    sizeProduct: sizeProduct,
+                    totalPrice: totalPrice,
+                    colorProduct: colorProduct,
+                    category: productToBuy[0].categoria_producto,
+                    contactInfo: contactInfo,
+                    name: fullName,
+                    doc: doc,
+                    address: address + " " + addressExtra,
+                    phoneNumber: phoneNumber
+                }
+
+                let shoppingInfo = JSON.stringify(infoPurchase)
+                fetch(`/order/create/${shoppingInfo}`)
+                .then(status => status.json())
+                .then(status => {
+                    if(status){
+                        fetch(`/update/product/${shoppingInfo}`)
+                        .then(status => status.json)
+                        .then(status => {
+                            if(status){
+                                popUpAlert("Gracias por tu compra!", "Tu pedido ha sido recibido y nos comunicaremos pronto contigo", "success")
+                                homePage();
+                            }
+                        })
+                    }
+                })
             }else{
                 errorMessage.style.display = "block";
             }
@@ -206,8 +277,5 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
      goBackButton.addEventListener("click", () => {
         singleProduct(idProduct)
      })
-
-
-
 
 }

@@ -63,8 +63,19 @@ app.get('/purchase', (req, res) => {
 })
 
 /***************************************************************
- *                          Visits 
+ *                          Metrics 
 ***************************************************************/
+
+app.get('/metrics', (req, res) => {
+    const sql2 = `SELECT * FROM metrics WHERE id = '1' `;
+    connection.query(sql2, (error, results) => {
+        if (error)
+            throw error;
+        if (results.length > 0) {
+            res.json(results);
+        }
+    })
+})
 
 app.get('/visits/:query', (req, res) => {
 
@@ -154,6 +165,63 @@ app.get('/product/:id', (req, res) => {
     });
 });
 
+app.get('/update/product/:userInfo', (req,res) => {
+
+    const {userInfo} = req.params;
+    let shippingInfo = JSON.parse(userInfo);
+
+    if(shippingInfo.category == "ACCESORIO"){
+        const sql = `SELECT * FROM products WHERE id = '${shippingInfo.idProduct}' `;
+        connection.query(sql, (error, results) => {
+            if (error) throw error;
+            if (results.length > 0) {
+                let string = JSON.stringify(results);
+                let json = JSON.parse(string);
+                let stock = json[0].stock_producto - shippingInfo.totalProducts;
+
+                const sql2 = `UPDATE products SET stock_producto = ${stock} WHERE id = ${shippingInfo.idProduct}`;
+                connection.query(sql2, (error, results) => {
+                    if (error)throw error;
+                    else res.send(true);
+                })
+            }
+        })
+    }
+
+    if(shippingInfo.category == "ROPA"){
+        const sql = `SELECT * FROM products WHERE id = '${shippingInfo.idProduct}' `;
+        connection.query(sql, (error, results) => {
+            if (error) throw error;
+            if (results.length > 0) {
+                let string = JSON.stringify(results);
+                let json = JSON.parse(string);
+                let tallas = JSON.parse(json[0].stock_producto);
+                console.log(tallas.tallas)
+                switch(shippingInfo.sizeProduct){
+                    case "S":
+                        tallas.tallas.S = parseInt(tallas.tallas.S) - shippingInfo.totalProducts;
+                        break;
+                    case "M":
+                        tallas.tallas.M = parseInt(tallas.tallas.M) - shippingInfo.totalProducts;
+                        break;
+                    case "L":
+                        tallas.tallas.L = parseInt(tallas.tallas.L) - shippingInfo.totalProducts;
+                        break;
+                }
+                
+                let jsonToUpdate = JSON.stringify(tallas);
+
+                const sql2 = `UPDATE products SET stock_producto = '${jsonToUpdate}' WHERE id = ${shippingInfo.idProduct}`;
+                connection.query(sql2, (error, results) => {
+                    if (error)throw error;
+                    else res.send(true);
+                })
+            }
+        })
+    }
+
+})
+
 /***************************************************************
  *                          Orders
 ***************************************************************/
@@ -183,6 +251,46 @@ app.get('/orders/:order', (req, res) => {
         }
     });
 });
+
+/***************************************************************
+ *                    Create a new order 
+***************************************************************/
+
+app.get('/order/create/:userInfo', (req,res) => {
+    const {userInfo} = req.params;
+    let shippingInfo = JSON.parse(userInfo);
+
+    const sql = "INSERT INTO `orders`(`id`, `codigo_orden`, `producto`, `informacion_producto`, `cantidad`, `precio_total`, `fecha_compra`, `nombre_cliente`, `cedula_cliente`, `direccion_cliente`, `telefono_cliente`, `estado_envio`)" + ` VALUES ('','${shippingInfo.orderCode}','${shippingInfo.nameProduct}','${shippingInfo.descProduct}','${shippingInfo.totalProducts}' ,'${shippingInfo.totalPrice}','${shippingInfo.date}','${shippingInfo.name}','${shippingInfo.doc}','${shippingInfo.address}','${shippingInfo.phoneNumber}','Pendiente')`;
+    connection.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            const sql2 = `SELECT * FROM metrics WHERE id = '1' `;
+            connection.query(sql2, (error, results) => {
+                if (error)
+                    throw error;
+                if (results.length > 0) {
+                    let string = JSON.stringify(results);
+                    let json = JSON.parse(string);
+                    let pedidos = json[0].pedidos + 1;
+                    let productos_vendidos = parseInt(json[0].productos_vendidos) + parseInt(shippingInfo.totalProducts)
+                    let ganancias_totales = parseInt(json[0].ganancias_totales) + parseInt(shippingInfo.totalPrice)
+
+                    const sql3 = `UPDATE metrics SET pedidos = ${pedidos}, productos_vendidos = ${productos_vendidos}, ganancias_totales = ${ganancias_totales} WHERE id = 1`;
+                    connection.query(sql3, (error, results) => {
+                        if (error)
+                            throw error;
+                        else{
+                            res.send(true);
+                        }
+                    })
+                }
+            })
+        }
+    });
+
+
+
+})
 
 /***************************************************************
  *                          Port 

@@ -291,7 +291,7 @@
     float: right;
     background-color: var(--red-UD);
     padding: 10px 40px;
-    border-radius: 20px;
+    border-radius: 7px;
     cursor: pointer;
     transition: 0.2s all;
 }

@@ -21,7 +21,7 @@ export const orderPage = async (orderToFind = "") => {
         const loginButton = document.querySelector("#login-button");
         loginButton.style.display = "none";
 
-        let orderArray = [], fetchURL, countOrders, countVisits;
+        let orderArray = [], fetchURL, countVisits;
 
         await fetch("/visits/get")
         .then(data => data.json())
@@ -33,7 +33,16 @@ export const orderPage = async (orderToFind = "") => {
         .then(data => data.json())
         .then(data => orderArray = data);
 
-        (orderArray != 'no_results') ? countOrders = orderArray.length : countOrders = 0;
+        let countOrders, countSoldProducts, countProfits
+
+        await fetch('/metrics')
+        .then(data => data.json())
+        .then(data => {
+            console.log(data)
+            countOrders = data[0].pedidos;
+            countSoldProducts = data[0].productos_vendidos;
+            countProfits = data[0].ganancias_totales
+        });
 
         const createButton = () => {
             if(fetchURL != '/orders'){
@@ -56,7 +65,7 @@ export const orderPage = async (orderToFind = "") => {
 
         <div class='orderMetrics'>
             <div class='metric_card metric_message'>
-                <h2>Hola Santiago Baron</h2>
+                <h2>Hola, bienvenido al dashboard</h2>
                 <p>Bienvenido al sistema de pedidos de UD Identity. 
                 Desde aquí podrás gestionar las compras y envíos solicitados. 
                 También podrás acceder a las estadísticas de la tienda y mucho más.
@@ -71,7 +80,7 @@ export const orderPage = async (orderToFind = "") => {
                 </div>
                 <div class='metric_product'>
                     <img src='./src/assets/producto.png' class='metric2_imgs'>
-                    <p>13 productos vendidos</p>
+                    <p>${countSoldProducts} productos vendidos</p>
                 </div>
             </div>
 
@@ -79,7 +88,7 @@ export const orderPage = async (orderToFind = "") => {
                 <img src='./src/assets/ingresos.png' class='metric_imgs'>
                 <div class='metricText'>
                     <p>Ingresos recibidos</p>
-                    <p>$400.000</p>
+                    <p>$${countProfits.toLocaleString("en")}</p>
                 </div>
             </div>
             
@@ -160,7 +169,7 @@ export const orderPage = async (orderToFind = "") => {
             
             <div class='order-item'>
                 <span class="material-icons-round icon-menu">calendar_month</span>
-                <p class='orderDate'>Agosto 19 de 2022</p>
+                <p class='orderDate'>${order.fecha_compra}</p>
             </div>
             <div class='order-item'>
                 <span class="material-icons-round icon-menu">person</span>

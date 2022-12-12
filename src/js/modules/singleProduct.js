@@ -126,7 +126,7 @@ export const singleProduct = async (productId) => {
                 </div>
                 
                 <label>Cantida de productos:</label>
-                <input class='numItems' type='number' min='1' max='${getMaxProducts()}' placeholder="1">
+                <input class='numItems' type='number' min='0' max='${getMaxProducts()}' placeholder="0">
 
 
                 <div class='finalPrice'>
@@ -135,7 +135,7 @@ export const singleProduct = async (productId) => {
                         <span class='tableTitle'>Producto</span>
                         <span class='tableTitle rightSide'>Precio</span>
 
-                        <p id='productDetails'>${product[0].nombre_producto} x 1</p>
+                        <p id='productDetails'>${product[0].nombre_producto}</p>
                         <p class='rightSide' id='tableProductPrice'>$${product[0].precio_producto.toLocaleString("en")}</p>
 
                         <p>Servicio de envío</p>
@@ -229,9 +229,13 @@ export const singleProduct = async (productId) => {
         
         e.preventDefault();
 
-        if(parseInt(maxItems.value) >= 1 && parseInt(maxItems.value) <= 
-        parseInt(maxItems.getAttribute("max"))){
+        let maxToCompare = parseInt(maxItems.getAttribute("max"))
+        if(maxToCompare == 0){
+            popUpAlert("No hay más productos", "Este producto se encuentra agotado", "error")
+        }
 
+        if(parseInt(maxItems.value) >= 1 && parseInt(maxItems.value) <= maxToCompare 
+        && parseInt(maxItems.value) != 0){
             if(product[0].categoria_producto == "ROPA"){
                 purchase(product[0].id, maxItems.value, size.value , colorToSelect);
             }
@@ -239,7 +243,6 @@ export const singleProduct = async (productId) => {
             if(product[0].categoria_producto == "ACCESORIO"){
                 purchase(product[0].id, parseInt(maxItems.value), "",colorToSelect);
             }
-
         }
     })
 }

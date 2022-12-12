@@ -53,6 +53,7 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
 
     mainContent.innerHTML = `
     
+    <p class='goBack'>< Volver al inicio</p>
     
     <div class='sendProduct'>
 
@@ -61,68 +62,60 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
 
             <form>
             
-            <p>Información de contacto</p>
-            <div class='unitary-box-form'>
-                <label>Email o número de teléfono móvil</label>
-                <input type='text' id='' placeholder='example@gmail.com'>
-            </div>
-            
-            
-            <p class='shippingInfo'>Direccion de envío</p>
-
-            <div class='unitary-box-form'>
-                <label>Nombre completo</label>
-                <input type='text' id='' placeholder='Jose Antonio Peréz'>
-            </div>
-
-            <div class='unitary-box-form'>
-                <label>Cédula de ciudadania o NIT</label>
-                <input type='text' id='' placeholder='63872989'>
-            </div>
-
-            <div class='unitary-box-form'>
-                <label>Dirección</label>
-                <input type='text' id='' placeholder='Carrera 75 # 102-35'>
-            </div>
-
-            <div class='unitary-box-form'>
-                <label>Apartamento, local, etc. (opcional)</label>
-                <input type='text' id='' placeholder='Apto 201 Edificio Los Comuneros'>
-            </div>
-
-            <div class='rowForm'>
+                <p>Información de contacto</p>
+                <div class='unitary-box-form'>
+                    <label>Email o número de teléfono móvil</label>
+                    <input type='text' id='contactInfo' placeholder='example@gmail.com'>
+                </div>
+                
+                
+                <p class='shippingInfo'>Direccion de envío</p>
 
                 <div class='unitary-box-form'>
-                    <label>País/región</label>
-                    <input type='text' id='' value='Colombia' disabled>
+                    <label>Nombre completo</label>
+                    <input type='text' id='fullName' placeholder='Jose Antonio Peréz'>
                 </div>
 
                 <div class='unitary-box-form'>
-                    <label>Departamento</label>
-                    <input type='text' id='' value='BOGOTÁ D.C' disabled>
+                    <label>Cédula de ciudadania o NIT</label>
+                    <input type='text' id='document' placeholder='63872989'>
                 </div>
 
                 <div class='unitary-box-form'>
-                    <label>Ciudad</label>
-                    <input type='text' id='' value='BOGOTÁ D.C' disabled>
+                    <label>Dirección</label>
+                    <input type='text' id='adress' placeholder='Carrera 75 # 102-35'>
                 </div>
-            </div>
 
+                <div class='unitary-box-form'>
+                    <label>Apartamento, local, etc. (opcional)</label>
+                    <input type='text' id='adressExtra' placeholder='Apto 201 Edificio Los Comuneros'>
+                </div>
 
-            <div class='unitary-box-form'>
-                <label>Teléfono</label>
-                <input type='text' id='' placeholder='3208279839'>
-            </div>
+                <div class='rowForm'>
+
+                    <div class='unitary-box-form'>
+                        <label>País/región</label>
+                        <input type='text' value='Colombia' disabled>
+                    </div>
+
+                    <div class='unitary-box-form'>
+                        <label>Departamento</label>
+                        <input type='text' value='Bogotá D.C' disabled>
+                    </div>
+
+                    <div class='unitary-box-form'>
+                        <label>Ciudad</label>
+                        <input type='text' value='Bogotá D.C' disabled>
+                    </div>
+                </div>
+
+                <div class='unitary-box-form'>
+                    <label>Teléfono</label>
+                    <input type='text' id='phoneNumber' placeholder='3208279839'>
+                </div>
             
             </form>
-
-
-
-
         </div>
-
-
-
 
         <div class='infoProduct'>
             <h2>Resumen de la compra</h2>
@@ -152,13 +145,69 @@ export const purchase = async (idProduct, totalProducts, sizeProduct = "", color
 
                     </div>
                 </div>
+                <p id='error-form'>Completa todos los campos!</p>
             <button class='buyButton' type='submit'>Realizar pedido</button>
         </div>
     
     
-    </div>
-    
-    `
+    </div>`;
+
+
+    /**
+     * Comprobacion del formulario
+     */
+
+    const buyButton = document.querySelector(".buyButton");
+    buyButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        buyProduct();
+    })
+
+    const buyProduct = () =>{
+
+        // Obtenemos los inputs
+
+        const contactInfo = document.querySelector("#contactInfo").value;
+        const fullName = document.querySelector("#fullName").value;
+        const doc = document.querySelector("#document").value;
+        const adress = document.querySelector("#adress").value;
+        const adressExtra = document.querySelector("#adressExtra").value;
+        const phoneNumber = document.querySelector("#phoneNumber").value;
+        let errorMessage = document.querySelector("#error-form")
+
+        if(contactInfo != "" && fullName != "" && doc != "" &&
+            adress != "" && phoneNumber != ""){
+                errorMessage.style.display = "none";
+
+            }else{
+                errorMessage.style.display = "block";
+            }
+    }
+
+    /**
+     * Color de borde cuando esta seleccionado
+     */
+
+    const pruebaBox = document.querySelectorAll(".unitary-box-form");
+    pruebaBox.forEach(element => {
+        element.addEventListener("click", () => {
+            element.style.border = '2px solid rgb(0, 149, 255)';
+        })
+        element.addEventListener("mouseout", () => {
+            element.style.border = '1px solid rgb(209, 209, 209)';
+        })
+    });
+
+    /**
+     * Boton para volver al producto
+     */
+
+     const goBackButton = document.querySelector(".goBack");
+     goBackButton.addEventListener("click", () => {
+        singleProduct(idProduct)
+     })
+
+
 
 
 }

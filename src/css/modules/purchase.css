@@ -39,12 +39,12 @@
 }
 
 .infoUser > form{
-    padding: 0px 100px 0 50px;
+    padding: 0px 100px 0 30px;
 }
 
 .infoUser h2 {
     margin-bottom: 30px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 .infoUser > form > p {
@@ -93,6 +93,8 @@
     display: inline-block;
     width: 100%;
 }
+
+
 .rowForm{
     display: flex;
 }

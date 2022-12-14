@@ -23,6 +23,18 @@ export const homePage = async () => {
         <div class='featured-products'></div>
     </div>
 
+    <div class='info-page'>
+        <img src='./src/assets/coleccion.png'>
+        <div>
+            <h2>Descubre tu verdadera identidad con UD Identity</h2>
+            <p>En UD Identity, ofrecemos una amplia selección de ropa y 
+            accesorios alusivos a la Universidad Distrital. Nuestra tienda 
+            es el lugar perfecto para encontrar prendas y accesorios que te 
+            permitan mostrar tu orgullo por ser parte de la UD.</p>
+            <a class='goToUD' href='https://www.udistrital.edu.co/inicio' target=”_blank”> Ir a la página oficial de la Universidad</a>
+        </div>
+    </div>
+
     <div class='clothes'>
         <h2>Colección de ropa de la Universidad Distrital</h2>
         <p>¡Ropa para vestir tu verdadera identidad universitaria!</p>

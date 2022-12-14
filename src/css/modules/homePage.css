@@ -22,7 +22,15 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 30px;
     row-gap: 30px;
-    margin-bottom: 180px;
+}
+
+
+.featured-products{
+    margin-bottom: 80px;
+}
+
+.clothes-products, .accessories-products{
+    margin-bottom: 120px;
 }
 
 .productBox{
@@ -33,6 +41,11 @@
     text-align: center;
     cursor: pointer;
     transition: 0.2s all;
+}
+
+.productBox > div > p::after{
+    content: "COP";
+    font-size: 14px;
 }
 
 .productBox:hover{
@@ -59,3 +72,57 @@
     font-weight: 400;
 }
 
+.info-page{
+    background-color: #080c17;
+    border-radius: 25px;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 120px;
+    display: flex;
+    color: var(--white);
+}
+
+.info-page img{
+    width: 60%;
+    width: 60%;
+    padding:  50px 50px 0px 30px;
+}
+
+.info-page > div {
+    width: 40%;
+    padding: 80px 110px 80px 50px;
+}
+
+.info-page > div > h2{
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.info-page > div > p{
+    font-size: 17px;
+}
+
+.goToUD{
+    width: 100%;
+    display: block;
+    text-align: center;
+    line-height: 60px;
+    font-size: 17px;
+    margin-top: 40px;
+    border-radius: 0 !important;
+    height: 60px !important;
+    background-color: #ffcf00;
+    color: var(--white);
+    border-bottom: 5px solid #1f2044;
+    border-right: 5px solid #1f2044;
+    color: #1f2044;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.1s all;
+}
+
+.goToUD:hover{
+    background-color: #eec100;
+    transition: 0.1s all;
+}

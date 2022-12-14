@@ -20,6 +20,7 @@
     background-color: #e9e9e7;
     border-radius: 15px;
     width: 100%;
+    cursor: pointer;
 }
 
 .smallImages > img{
@@ -232,4 +233,28 @@
     margin-top: 60px;
     margin-bottom: 30px;
     cursor: pointer;
+}
+
+.bigImageContainer{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.515);
+    display: none;
+    cursor: pointer;
+}
+
+#bigImage{
+    position: absolute;
+    width: 650px;
+    height: 750px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #e9e9e7;
+    cursor: default !important;
 }

@@ -77,10 +77,10 @@ export const singleProduct = async (productId) => {
         <div class='productInfo'>
             <div class='imgsProduct'>
                 <div class='smallImages'>
-                    <img src='${images.firstImg}'>
-                    <img src='${images.secondImg}'>
+                    <img src='${images.firstImg}' id='small1'>
+                    <img src='${images.secondImg}' id='small2' >
                 </div>
-                <img src='${images.preview}' class='mainImg'>
+                <img src='${images.preview}' class='mainImg' id='big1'>
             </div>
 
             <div class='productDesc'>
@@ -150,6 +150,9 @@ export const singleProduct = async (productId) => {
                 <input type="submit" class="buyButton" value="Comprar ahora" disabled>
 
             </form>
+        </div>
+        <div class='bigImageContainer'>
+            <img src='' id='bigImage'>
         </div>
     </div>`;
 
@@ -245,4 +248,51 @@ export const singleProduct = async (productId) => {
             }
         }
     })
+
+
+
+
+//<div class='smallImages'>
+     //               <img src='${images.firstImg}' id='small1'>
+     //               <img src='${images.secondImg}' id='small2' >
+    //</img></img>            </div>
+     //</img>           <img src='${images.preview}' class='mainImg' id='big1'></img>
+
+
+     const small1 = document.querySelector("#small1");
+     const small2 = document.querySelector("#small2");
+     const big1 = document.querySelector("#big1");
+     const bigImageContainer = document.querySelector(".bigImageContainer")
+     const bigImage = document.querySelector("#bigImage");
+ 
+     small1.addEventListener("click", () => {
+         let bigLink = big1.src;
+         let smallLink = small1.src;
+         big1.src = smallLink;
+         small1.src = bigLink;
+     })
+
+     small2.addEventListener("click", () => {
+        let bigLink = big1.src;
+        let smallLink = small2.src;
+        big1.src = smallLink;
+        small2.src = bigLink;
+    })
+
+    big1.addEventListener("click", (event) => {
+        bigImageContainer.style.display = "block";
+        bigImage.src = big1.src
+    })
+
+    bigImageContainer.addEventListener("click", (event) => {
+        if(event.target != bigImage){
+            bigImageContainer.style.display = "none";
+        }
+    })
+
+
+
+
+
+
 }

@@ -229,3 +229,79 @@ footer{
     color: var(--black-UD);
     padding: 40px;
 }
+
+
+@media only screen and (max-width: 1440px){
+    .main-content{
+        width: 80%;
+        margin:auto;
+    }
+    .featured-products, .clothes-products, .accessories-products{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .info-page{
+        height: 390px;
+    }
+    .info-page > div{
+        padding: 55px 90px 0px 0px;
+    }
+    .info-page > div > h2{
+        font-size: 22px;
+        margin-bottom: 22px;
+    }
+    .info-page > div > p{
+        font-size: 14px;
+    }
+    .goToUD{
+        line-height: 55px;
+        height: 55px !important;
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    .featured-products, .clothes-products, .accessories-products{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .info-page{
+        height: 245px;
+    }
+    .info-page > div{
+        padding: 58px 0px 0px 0px;
+    }
+    .info-page img {
+        width: 52%;
+        padding: 30px 29px 0px 18px;
+    }
+    .info-page > div > h2{
+        font-size: 22px;
+        margin-bottom: 22px;
+    }
+    .info-page > div > p{
+        display: none;
+    }
+    .goToUD{
+        line-height: 55px;
+        height: 55px !important;
+        font-size: 15px;
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    header{
+        overflow: hidden;
+    }
+
+    .info-page{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 425px){
+
+}
+
+@media only screen and (max-width: 320px){
+
+}
